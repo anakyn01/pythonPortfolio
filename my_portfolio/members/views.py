@@ -10,6 +10,20 @@ def main(request):
 import numpy as np
 from django.shortcuts import render
 
+def syntax(request):
+    template = loader.get_template('syntax.html')
+    context = {
+        'firstname':'영일',
+        'lastname':'황',
+    }
+    return HttpResponse(template.render(context, request))
+
+def ifelse(request):
+    template = loader.get_template('ifelse.html')
+    context = {
+        'greeting':2,
+    }
+    return HttpResponse(template.render(context, request))
 
 def members(request):
     template = loader.get_template('members.html')
@@ -25,3 +39,25 @@ def members(request):
 
     # 결과를 템플릿으로 전달
     return render(request, 'members.html', {'total': total, 'mean': mean})
+
+def forloop(request):
+ template = loader.get_template('forloop.html')
+ context = {
+     'cars': [
+         {
+             'brand': 'Ford',
+             'model': 'Mustang',
+             'year': '1964',
+         },
+         {
+             'brand': 'Ford',
+             'model': 'Bronco',
+             'year': '1970',
+         },
+         {
+             'brand': 'Volvo',
+             'model': 'P1800',
+             'year': '1964',
+         }]
+ }
+ return HttpResponse(template.render(context, request))
