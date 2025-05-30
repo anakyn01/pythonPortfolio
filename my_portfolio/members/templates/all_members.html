@@ -1,13 +1,17 @@
 {% extends "master.html" %}
 
 {% block title %}
-python - for
+아카데미 - 모든맴버
 {% endblock %}
 
 {% block content %}
-    {% for x in cars %}
-<h1>{{ x.brand }}</h1>
-<p>{{ x.model }}</p>
-<p>{{ x.year }}</p>
+<ul class="list-group list-group-flush">
+    {% for x in mymembers %}
+    <li class="list-group-item">
+        <a href="details/{{ x.id }}">
+        {{ x.firstname }} {{ x.lastname }}
+        </a>
+    </li>
     {% endfor %}
+</ul>
 {% endblock %}
